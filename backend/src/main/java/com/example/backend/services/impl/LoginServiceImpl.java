@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.backend.data.entities.User;
 import com.example.backend.data.repositories.UserRepository;
-import com.example.backend.dto.UserLoginRequest;
-import com.example.backend.dto.UserLoginResponse;
+import com.example.backend.dto.request.UserLoginRequest;
+import com.example.backend.dto.response.UserLoginResponse;
 import com.example.backend.exceptions.BadRequestException;
 import com.example.backend.services.LoginService;
 
