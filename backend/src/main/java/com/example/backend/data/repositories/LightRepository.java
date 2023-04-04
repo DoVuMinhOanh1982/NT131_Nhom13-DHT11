@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.backend.data.entities.Light;
 
-public interface LightRepository extends JpaRepository<Light, Long>{
-    
+public interface LightRepository extends JpaRepository<Light, Long> {
+    Light findTopByOrderByIdDesc();
 }
