@@ -1,10 +1,42 @@
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  ToastAndroid,
+} from "react-native";
 import React from "react";
 import ButtonCustom from "./ButtonCustom";
+import axios from "../api";
 
 export default function FormLogin() {
   const [usename, onChangeUsername] = React.useState("");
   const [password, onChangePassword] = React.useState("");
+
+  const login = async () => {
+    try {
+      const response = await axios.post("/api/login", {
+        username: usename,
+        password: password,
+      });
+      if (response.status === 200) {
+        console.log("Login success");
+        ToastAndroid.showWithGravity(
+          "Login Successfully!",
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM
+        );
+      }
+    } catch (error) {
+      console.log(error);
+      ToastAndroid.showWithGravity(
+        "Login Failed!",
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM
+      );
+    }
+  };
 
   return (
     <View style={styles.form_login}>
@@ -36,7 +68,7 @@ export default function FormLogin() {
         placeholder="Password"
       />
 
-      <ButtonCustom title={"LOGIN"} onPress={() => {}} />
+      <ButtonCustom title={"LOGIN"} onPress={login} />
     </View>
   );
 }
