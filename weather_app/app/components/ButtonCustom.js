@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     borderRadius: 20,
-    opacity: 0.6,
+    opacity: 0.8,
   },
   text_button: {
     color: "#000000",
