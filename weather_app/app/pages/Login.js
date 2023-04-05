@@ -8,8 +8,8 @@ export default function Login() {
         style={styles.background_image}
         source={
           new Date().getHours() >= 6 && new Date().getHours() <= 18
-            ? require("../assets/background_morning.jpg")
-            : require("../assets/background_evening.jpg")
+            ? require("../assets/background_morning.png")
+            : require("../assets/background_evening.png")
         }
       />
       <FormLogin />

@@ -9,10 +9,13 @@ import {
 import React from "react";
 import ButtonCustom from "./ButtonCustom";
 import axios from "../api";
+import MainContainer from "../pages/MainContainer";
+import { useRouter } from "expo-router";
 
 export default function FormLogin() {
   const [usename, onChangeUsername] = React.useState("");
   const [password, onChangePassword] = React.useState("");
+  const router = useRouter();
 
   const login = async () => {
     try {
@@ -27,6 +30,7 @@ export default function FormLogin() {
           ToastAndroid.SHORT,
           ToastAndroid.BOTTOM
         );
+        router.push("../pages/MainContainer");
       }
     } catch (error) {
       console.log(error);
@@ -87,17 +91,17 @@ const styles = StyleSheet.create({
   },
   title_login_morning: {
     fontSize: 30,
-    color: "#000000",
+    color: "#FFFFFF",
   },
   title_login_evening: {
     fontSize: 30,
-    color: "#FFFFFF",
+    color: "#000000",
   },
   input: {
     height: 60,
     width: 350,
     backgroundColor: "#FFFFFF",
-    opacity: 0.6,
+    opacity: 0.8,
     textAlign: "left",
     paddingLeft: 25,
     borderWidth: 0.5,
