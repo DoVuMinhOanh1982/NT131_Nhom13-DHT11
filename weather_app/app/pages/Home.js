@@ -1,32 +1,32 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import Header from "../components/Header";
 import { SafeAreaView } from "react-native-safe-area-context";
+import LocationCurrent from "../components/LocationCurrent";
+import WeatherCurrent from "../components/WeatherCurrent";
 
 export default function Home() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.home_page}>
-        <Image
-          style={styles.background_image}
-          source={
-            new Date().getHours() >= 6 && new Date().getHours() <= 18
-              ? require("../assets/background_morning.png")
-              : require("../assets/background_evening.png")
-          }
-        />
+    <View style={styles.container}>
+      <Image
+        style={styles.background_image}
+        source={
+          new Date().getHours() >= 6 && new Date().getHours() <= 18
+            ? require("../assets/background_morning.png")
+            : require("../assets/home_background.png")
+        }
+      />
+      <ScrollView>
         <View style={styles.body_home}>
-          <Header />
+          <LocationCurrent />
+          <WeatherCurrent />
         </View>
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  home_page: {
     flex: 1,
   },
   background_image: {

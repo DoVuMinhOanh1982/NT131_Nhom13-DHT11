@@ -6,6 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Home from "./Home";
 import About from "./About";
+import Detail from "./Detail";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,7 +14,6 @@ function MainContainer() {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator
-        labeled={false}
         initialRouteName={"Home"}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -22,8 +22,10 @@ function MainContainer() {
 
             if (rn === "Home") {
               iconName = focused ? "home" : "home-outline";
+            } else if (rn === "Detail") {
+              iconName = focused ? "cloudy-night" : "cloudy-night-outline";
             } else if (rn === "About") {
-              iconName = focused ? "list" : "list-outline";
+              iconName = focused ? "people" : "people-outline";
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -41,16 +43,25 @@ function MainContainer() {
             elevantion: 0,
             backgroundColor: "#FFFFFF",
             borderRadius: 15,
-            height: 100,
+            height: 150,
             ...styles.shadow,
           },
         }}
       >
-        <Tab.Screen name={"Home"} component={Home} options={{ title: null }} />
+        <Tab.Screen
+          name={"Home"}
+          component={Home}
+          options={{ title: null, headerShown: false }}
+        />
+        <Tab.Screen
+          name={"Detail"}
+          component={Detail}
+          options={{ title: null, headerShown: false }}
+        />
         <Tab.Screen
           name={"About"}
           component={About}
-          options={{ title: null }}
+          options={{ title: null, headerShown: false }}
         />
       </Tab.Navigator>
     </NavigationContainer>
