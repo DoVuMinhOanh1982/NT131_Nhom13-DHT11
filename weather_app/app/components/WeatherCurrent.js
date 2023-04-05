@@ -60,7 +60,7 @@ export default function WeatherCurrent() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{data?.time}</Text>
+      {/* <Text style={styles.title}>{data?.time}</Text> */}
       <Text style={styles.temp_c}>{data?.temp_c}°C</Text>
 
       <View style={styles.square}>
