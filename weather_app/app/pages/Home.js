@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
-import Header from "../components/Header";
+import Header from "../components/HeaderDetail";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LocationCurrent from "../components/LocationCurrent";
 import WeatherCurrent from "../components/WeatherCurrent";
@@ -15,9 +15,9 @@ export default function Home() {
             : require("../assets/home_background.png")
         }
       />
+      <LocationCurrent />
       <ScrollView>
         <View style={styles.body_home}>
-          <LocationCurrent />
           <WeatherCurrent />
         </View>
       </ScrollView>
@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   body_home: {
-    margin: 20,
+    marginBottom: 10,
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
