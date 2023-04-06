@@ -22,7 +22,8 @@ export default function SensorData() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
+    marginLeft: 20,
+    marginRight: 20,
   },
   square: {
     marginTop: 20,

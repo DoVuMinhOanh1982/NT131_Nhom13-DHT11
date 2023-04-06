@@ -39,6 +39,11 @@ export default function FormLogin() {
         ToastAndroid.SHORT,
         ToastAndroid.BOTTOM
       );
+      ToastAndroid.showWithGravity(
+        { error },
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM
+      );
     }
   };
 

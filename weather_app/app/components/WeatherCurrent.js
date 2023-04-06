@@ -117,6 +117,7 @@ export default function WeatherCurrent() {
           <Text style={styles.content}>Khả năng mưa</Text>
           <Text style={styles.ratio}>{future?.avail_rain}%</Text>
         </View>
+        <Text style={styles.content}> </Text>
       </View>
     </View>
   );
