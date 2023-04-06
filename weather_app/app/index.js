@@ -6,8 +6,8 @@ import MainContainer from "./pages/MainContainer";
 export default function Page() {
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Login /> */}
-      <MainContainer/>
+      <Login />
+      {/* <MainContainer/> */}
     </SafeAreaView>
   );
 }
