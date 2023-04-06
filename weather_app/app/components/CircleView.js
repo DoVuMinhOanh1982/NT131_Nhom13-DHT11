@@ -1,11 +1,11 @@
 import { View, StyleSheet } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 
-export default function CircleView() {
+export default CircleView = ({temp}) => {
   return (
     <View style={styles.progressCircleView}>
       <CircularProgress
-        value={20}
+        value={temp}
         maxValue={40}
         valueSuffix={"°C"}
         progressValueStyle={{ fontSize: 42, fontWeight: "700" }}

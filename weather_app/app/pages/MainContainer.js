@@ -26,8 +26,7 @@ function MainContainer() {
               iconName = focused ? "cloudy-night" : "cloudy-night-outline";
             } else if (rn === "About") {
               iconName = focused ? "people" : "people-outline";
-            }
-
+            } 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}

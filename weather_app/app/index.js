@@ -1,19 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import Login from "./pages/Login";
 import MainContainer from "./pages/MainContainer";
 
 export default function Page() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Login />
-      {/* <MainContainer/> */}
-    </SafeAreaView>
+    <View style={styles.container}>
+      {/* <Login /> */}
+      <MainContainer />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
 });
