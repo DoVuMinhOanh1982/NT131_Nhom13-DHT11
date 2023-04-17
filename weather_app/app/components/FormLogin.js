@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import ButtonCustom from "./ButtonCustom";
-import axios from "../api";
+import axios from "../api/index";
 import MainContainer from "../pages/MainContainer";
 import { useRouter } from "expo-router";
 
@@ -23,7 +23,7 @@ export default function FormLogin() {
         username: usename,
         password: password,
       });
-      if (response.status === 200) {
+      if (response && response.status === 200) {
         console.log("Login success");
         ToastAndroid.showWithGravity(
           "Login Successfully!",

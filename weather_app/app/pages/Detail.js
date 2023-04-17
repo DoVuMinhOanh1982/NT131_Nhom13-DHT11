@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import HeaderDetail from "../components/HeaderDetail";
 import Home from "./Home";
-import axios from "../api";
+import axios from "../api/index";
 import CircleView from "../components/CircleView";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonRefresh from "../components/ButtonRefresh";
@@ -19,7 +19,7 @@ import { useState } from "react";
 
 const Detail = () => {
   const [tempratureData, setTemperatureData] = useState({
-    temp: 0,
+    cel: 0,
     fah: 0,
     comment: null,
     suggest: null,
@@ -28,14 +28,14 @@ const Detail = () => {
 
   const getSensorTemprature = async () => {
     try {
-      const { data } = await axios.get("/api/view/temperature", {});
-      if (data.success) {
+      const response = await axios.get("/api/view/temperature", {});
+      if (response.success) {
         setTemperatureData({
-          temp: data.info.temp[0].celcius,
-          fah: data.info.fahrenheit[0].fahrenheit,
-          comment: data.info.comment[0].comment,
-          suggest: data.info.suggest[0].suggest,
-          warning: data.info.warning[0].warning,
+          cel: response.data.cel,
+          fah: response.data.fah,
+          comment: response.data.comment,
+          suggest: response.data.suggest,
+          warning: response.data.warning,
         });
         ToastAndroid.showWithGravity(
           "Get Info Successfully!",
@@ -66,11 +66,11 @@ const Detail = () => {
         />
         <HeaderDetail style={styles.header} />
         <ScrollView nestedScrollEnabled={true}>
-          <CircleView temp={tempratureData?.temp} />
+          <CircleView temp={tempratureData?.cel} />
           <ButtonRefresh />
           <SensorData
-            temp={30}
-            fah={30}
+            temp={tempratureData?.cel}
+            fah={tempratureData?.fah}
             humid={30}
             wind={30}
             uv={30}
