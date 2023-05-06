@@ -14,7 +14,6 @@ import CircleView from "../components/CircleView";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonRefresh from "../components/ButtonRefresh";
 import SensorData from "../components/SensorData";
-import CardCustom from "../components/CardCustom";
 import { useState, useEffect } from "react";
 
 const Detail = () => {
@@ -91,6 +90,7 @@ const Detail = () => {
   const getHumidityData = async () => {
     try {
       const responseHumidity = await axios.get("/api/view/humidity", {});
+      console.log(responseHumidity.data.humidity);
       setHumidityData({
         humidity: responseHumidity.data.humidity,
         suggest: responseHumidity.data.suggest,
@@ -117,12 +117,6 @@ const Detail = () => {
     getHumidityData();
   }, []);
 
-  const handleRefresh = () => {
-    getSensorTemprature();
-    getLightData();
-    getHumidityData();
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -137,7 +131,14 @@ const Detail = () => {
         <HeaderDetail style={styles.header} />
         <ScrollView nestedScrollEnabled={true}>
           <CircleView temp={tempratureData?.cel} />
-          <ButtonRefresh onPress={handleRefresh} />
+          <Text style={styles.comment}>{tempratureData?.comment}</Text>
+          <ButtonRefresh
+            onPress={() => {
+              getSensorTemprature();
+              getLightData();
+              getHumidityData();
+            }}
+          />
           <SensorData
             temp={tempratureData?.cel}
             fah={tempratureData?.fah}
@@ -146,8 +147,17 @@ const Detail = () => {
             uv={lightData?.uv}
             light={lightData?.light}
           />
-          <CardCustom />
-          <View style={{ height: 70 }}></View>
+          <View style={styles.adviceView}>
+            <Text style={styles.adviceTitle}>
+              Lời khuyên của bác sĩ (uy tín)
+            </Text>
+            <Text style={styles.adviceContent}>
+              {" - "} {tempratureData?.warning} {" \n"}
+              {" - "} {lightData?.warning} {" \n"}
+              {" - "} {humidityData?.warning} {" \n"}
+            </Text>
+          </View>
+          <View style={{ height: 60 }}></View>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -166,6 +176,46 @@ const styles = StyleSheet.create({
   },
   header: {
     height: Dimensions.get("window").height / 5,
+  },
+  title: {
+    fontSize: 23,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  comment: {
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  adviceTitle: {
+    marginLeft: 20,
+    marginTop: "5%",
+    width: "100%",
+    fontSize: 20,
+    textAlign: "left",
+    color: "#000",
+    fontWeight: "bold",
+    fontStyle: "normal",
+    lineHeight: 24,
+  },
+  adviceView: {
+    width: "90%",
+    backgroundColor: "rgba(255, 255, 255,0.4)",
+    borderRadius: 10,
+    alignSelf: "center",
+    marginBottom: "7%",
+  },
+  adviceContent: {
+    width: "100%",
+    padding: 10,
+    fontSize: 16,
+    color: "#000",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    lineHeight: 24,
+    display: "flex",
+    textAlign: "justify",
   },
 });
 

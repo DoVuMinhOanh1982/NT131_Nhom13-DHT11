@@ -30,7 +30,7 @@ export default function LocationCurrent() {
   return (
     <View>
       {/* <Text>{text}</Text> */}
-      <Text style={styles.location}>TP Ho Chi Minh</Text>
+      <Text style={styles.location}>TP Hồ Chí Minh</Text>
     </View>
   );
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   StyleSheet,
   TouchableOpacity,
@@ -7,17 +8,16 @@ import {
 } from "react-native";
 import ButtonCustom from "./ButtonCustom";
 
-const ButtonRefresh = () => {
+const ButtonRefresh = ({ onPress }) => {
   return (
     <View style={styles.button}>
-      <ButtonCustom title={"Refresh"} onPress={() => {}} />
+      <ButtonCustom title={"Refresh"} onPress={onPress} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     width: Dimensions.get("window").width,

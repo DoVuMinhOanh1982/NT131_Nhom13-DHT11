@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.backend.data.entities.Humidity;
 import com.example.backend.data.repositories.HumidityRepository;
+import com.example.backend.dto.request.HumidityRequest;
 import com.example.backend.dto.response.HumidityResponse;
 import com.example.backend.exceptions.BadRequestException;
 import com.example.backend.services.HumidityService;
@@ -20,13 +21,13 @@ public class HumidityServiceImpl implements HumidityService {
     private HumidityRepository humidityRepository;
 
     @Override
-    public Humidity sensorSentHumidityData(String humidity) {
+    public Humidity sensorSentHumidityData(HumidityRequest humidity) {
         if (humidity == null) {
             throw new BadRequestException("Missing fields, please send with humidity. check your field again");
         }
         Date date = new Date();
         Humidity humidityResponse = Humidity.builder()
-                .humidity(humidity)
+                .humidity(humidity.getHumidity())
                 .updatedAt(date)
                 .build();
         return humidityRepository.save(humidityResponse);
@@ -42,7 +43,7 @@ public class HumidityServiceImpl implements HumidityService {
         String suggest = "";
         String warning = "";
 
-        int humidityData = Integer.parseInt(humidity.getHumidity());
+        float humidityData = Float.parseFloat(humidity.getHumidity());
         if (humidityData <= 40) {
             suggest = "Kem dưỡng ẩm da, son dưỡng ẩm môi";
             warning = "Độ ẩm quá thấp, cần bổ sung gấp nước và sử dụng kem dưỡng ẩm, son dưỡng ẩm cho môi và da. Da có thể bị khô nứt hoặc tác động xấu nếu không sử dụng các sản phẩm bảo vệ hợp lý. Bảo quản các đồ dùng bằng da và gỗ tránh bị nứt ";
