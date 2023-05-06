@@ -42,7 +42,7 @@ public class TemperatureServiceImpl implements TemperatureService {
         String comment = "";
         String suggest = "";
         String warning = "";
-        int celcius = Integer.parseInt(temperature.getCelcius());
+        float celcius = Float.parseFloat(temperature.getCelcius());
 
         if (celcius <= 25) {
             comment = "Trời hôm nay khá lạnh đó!";

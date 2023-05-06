@@ -66,6 +66,7 @@ export default function FormLogin() {
         placeholder="Username"
       />
       <TextInput
+        secureTextEntry={true}
         style={styles.input}
         onChangeText={onChangePassword}
         value={password}
