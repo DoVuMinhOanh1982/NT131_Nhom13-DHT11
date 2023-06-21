@@ -14,5 +14,4 @@
 
 ## 3. Tác giả   
     GVDH: Lê Anh Tuấn
-    Sinh viên thực hiện: Đỗ Thị Minh Oanh
-    Sinh viên thực hiện: Lê Thị Anh Thư
+    Sinh viên: Đỗ Thị Minh Oanh
